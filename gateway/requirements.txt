@@ -1,0 +1,5 @@
+Flask
+ollama
+pandas
+psycopg2
+psycopg2-binary

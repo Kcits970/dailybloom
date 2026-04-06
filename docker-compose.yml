@@ -1,0 +1,19 @@
+services:
+  gateway:
+    build: ./gateway
+    ports:
+      - 80:80
+    networks:
+      - db-conn
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: testuser
+      POSTGRES_DB: testdb
+      POSTGRES_PASSWORD: test
+    networks:
+      - db-conn
+
+networks:
+  db-conn:
