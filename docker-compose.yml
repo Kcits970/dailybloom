@@ -1,17 +1,28 @@
+name: dailybloom
+
 services:
-  gateway:
-    build: ./gateway
+  database:
+    build:
+      context: ./database
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
     ports:
-      - 80:80
+      - 5432:5432
     networks:
       - db-conn
 
-  postgres:
-    image: postgres:latest
+  gateway:
+    build:
+      context: ./gateway
     environment:
-      POSTGRES_USER: testuser
-      POSTGRES_DB: testdb
-      POSTGRES_PASSWORD: test
+      POSTGRES_HOST: database
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - 8080:8080
     networks:
       - db-conn
 
