@@ -52,3 +52,9 @@ CREATE TABLE checklists (
     performed_at TIMESTAMP,
     image_path VARCHAR(255)
 );
+
+INSERT INTO users (id, login_info, nickname)
+VALUES (DEFAULT, 'example@email.com', 'example');
+
+INSERT INTO users (id, login_info, nickname)
+VALUES (DEFAULT, 'fakeaccount@email.com', 'fakename');
